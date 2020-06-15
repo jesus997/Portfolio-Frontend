@@ -1,0 +1,59 @@
+.portfolio {
+    width: 100%;
+    height: auto;
+}
+
+.portfolio.portfolio-grid {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1.25rem 1fr 1.25rem 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1.25rem;
+}
+
+.portfolio.portfolio-grid .project .project-image > figure {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.portfolio.portfolio-grid .project .project-image img {
+    object-fit: cover;
+}
+
+.portfolio.portfolio-grid .project .card-content {
+    font-size: 0.8rem;
+}
+
+@media screen and (max-width: 1270px) {
+    .portfolio.portfolio-grid {
+        -ms-grid-columns: 1fr 1.25rem 1fr;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 1690px) {
+    .portfolio.portfolio-grid {
+        -ms-grid-columns: 1fr 1.25rem 1fr 1.25rem 1fr 1.25rem 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 2300px) {
+    .portfolio.portfolio-grid {
+        -ms-grid-columns: 1fr 1.25rem 1fr 1.25rem 1fr 1.25rem 1fr 1.25rem 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    .portfolio.portfolio-grid .project .card-content {
+        font-size: 0.92rem;
+    }
+}
+
+.project-modal .project-description {
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+.project-modal .project-links {
+    margin-top: 1rem;
+}

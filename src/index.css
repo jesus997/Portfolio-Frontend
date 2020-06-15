@@ -1,13 +1,230 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html, body {
+  overflow: hidden;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.stretched-link::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: auto;
+  content: "";
+  background-color: rgba(0,0,0,0);
+}
+
+.site-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.site-wrapper .sidebar {
+  max-width: 24.375rem;
+  width: 100%;
+  height: 100vh;
+  padding: 1.875rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+
+  background: url(/static/sidebar-background.jpg) no-repeat;
+  background-position: center center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 990px) {
+  .site-wrapper {
+    display: block;
+  }
+
+  .site-wrapper .sidebar {
+    position: fixed;
+    left: -150%;
+    transition: all .5s;
+    z-index: 999;
+  }
+
+  .site-wrapper .sidebar.is-active {
+    left: 0;
+  }
+}
+
+.site-wrapper .sidebar,
+.site-wrapper .sidebar a {
+  color: #fff;
+}
+
+.site-wrapper .sidebar a:hover,
+.site-wrapper .sidebar a:focus {
+  background-color: transparent;
+}
+
+.site-wrapper .sidebar * {
+  z-index: 2;
+  position: relative;
+}
+
+.site-wrapper .sidebar:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(100, 12, 15, 0.8);
+  z-index: 1;
+}
+
+.site-wrapper main.content {
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 3.625rem 0 0;
+}
+
+.site-wrapper main.content .container {
+  padding-bottom: 3.625rem;
+}
+
+.site-wrapper main.content .page-description {
+  margin-bottom: 1.30rem;
+}
+
+.sidebar .header {
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+.sidebar .header .avatar {
+  margin: 1.25rem auto 1.625rem;
+}
+
+.sidebar .header .site-name,
+.sidebar .header .site-tagline {
+  text-transform: uppercase;
+}
+
+.sidebar .header .site-name {
+  font-size: 1.48rem;
+  font-weight: bold;
+}
+
+.sidebar .menu ul {
+  margin-top: 2.1875rem;
+}
+
+.sidebar .menu ul li > a {
+  display: inline-block;
+  padding-left: 0;
+  padding-right: 0;
+  text-transform: uppercase;
+  width: 100%;
+  position: relative;
+}
+
+.sidebar .menu ul li > a.is-active,
+.sidebar .menu ul li > a.active {
+  background-color: transparent;
+}
+
+.sidebar .menu ul li > a:after {
+  content: "\f105";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-left: 0.625rem;
+  opacity: 0;
+  -webkit-transition: opacity .5s;
+  -o-transition: opacity .5s;
+  transition: opacity .5s;
+}
+
+.sidebar .menu ul li > a:hover:after,
+.sidebar .menu ul li > a:focus:after,
+.sidebar .menu ul li > a.is-active:after,
+.sidebar .menu ul li > a.active:after {
+  opacity: 1;
+}
+
+@media screen and (min-width: 991px) {
+  .sidebar .menu ul li > a:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -2.5rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    background-color: #fff;
+    -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    margin: auto 0;
+    opacity: 0;
+    -webkit-transition: opacity .5s;
+    -o-transition: opacity .5s;
+    transition: opacity .5s;
+  }
+
+  .sidebar .menu ul li > a.is-active:before,
+  .sidebar .menu ul li > a.active:before {
+    opacity: 1;
+  }
+}
+
+.sidebar .footer {
+  background-color: transparent;
+  padding: 0;
+  margin-top: auto;
+}
+
+.sidebar .footer h3,
+.sidebar .footer .copy {
+  text-transform: uppercase;
+}
+
+.sidebar .footer h3 {
+  margin-bottom: 1rem;
+}
+
+.sidebar .footer .social-networks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.sidebar .footer .social-networks li > a {
+  display: block;
+}
+
+.sidebar .footer .copy {
+  font-size: 0.875rem;
+  text-align: center;
+  margin-top: 2rem;
 }
